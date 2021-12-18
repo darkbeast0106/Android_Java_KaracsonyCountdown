@@ -24,12 +24,16 @@ public class MainActivity extends AppCompatActivity {
 
     private void init(){
         szamlalo = findViewById(R.id.szamlalo);
-        Date most = Calendar.getInstance().getTime();
-        int ev = most.getYear();
-        if (most.getMonth() == 11 && most.getDate() >= 24){
+        Calendar most = Calendar.getInstance();
+        int ev = most.get(Calendar.YEAR);
+        int honap = most.get(Calendar.MONTH);
+        int nap = most.get(Calendar.DATE);
+        if (honap == 11 && nap >= 24){
             ev++;
         }
-        karacsony = new Date(ev,11,24);
+        Calendar karacsony = Calendar.getInstance();
+        karacsony.set(ev, 11, 24,0,0,0);
+        this.karacsony = karacsony.getTime();
     }
 
     @Override
